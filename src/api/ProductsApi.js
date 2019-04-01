@@ -1,6 +1,6 @@
 import Api from './Api';
 
-export default class Categories extends Api {
+export default class Products extends Api {
 
 
     static getAllCategories() {
@@ -8,4 +8,4 @@ export default class Categories extends Api {
     }
 }
 
-Categories.url = 'http://test-api.edfa3ly.io/category';
+Products.url = 'http://test-api.edfa3ly.io/product';

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './styleCategories.css';
-import Categories from './../../api/CategoriesApi';
+import './styleProducts.css';
+import Products from './../../api/ProductsApi';
 
-class CategoryList extends Component {
+class ProductsList extends Component {
     constructor() {
         super();
         this.state = {
@@ -12,13 +12,13 @@ class CategoryList extends Component {
 
     componentDidMount(){
 
-        Categories.getAllCategories().then((cat) => {
+        Products.getAllCategories().then((prod) => {
             
-            let cate = cat.map((e) => {
+            let product = prod.map((e) => {
 
-                return (<div key={e.id}>{e.name}</div>)
+                return (<div key={e.id} className="prod">{e.name}</div>)
             })
-            this.setState({initData: cate})
+            this.setState({initData: product})
             console.log(this.state.initData)
         })
 
@@ -35,4 +35,4 @@ class CategoryList extends Component {
     }
 }
 
-export default CategoryList;
+export default ProductsList;
