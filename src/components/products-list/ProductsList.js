@@ -1,38 +1,39 @@
 import React, { Component } from 'react';
 import './styleProducts.css';
-import Products from './../../api/ProductsApi';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { getAllProds } from './../../actions/productsAction';
 
 class ProductsList extends Component {
-    constructor() {
-        super();
-        this.state = {
-            initData: []
-        };
-    }
 
     componentDidMount(){
 
-        Products.getAllCategories().then((prod) => {
-            
-            let product = prod.map((e) => {
-
-                return (<div key={e.id} className="prod">{e.name}</div>)
-            })
-            this.setState({initData: product})
-            console.log(this.state.initData)
-        })
-
+        this.props.getAllProducts(); // action get all the fetched data
     }
 
     render(){
+        // console.log(this.props)
+        let li = this.props.products.map(e => <li key={e.id} className="prod">{e.name}</li>);
         return (
             <React.Fragment>
-                <div>
-                    {this.state.initData}
-                </div>
+                <ol>
+                    {li}
+                </ol>
             </React.Fragment>
         );
     }
 }
 
-export default ProductsList;
+function mapStateToProps(state) {
+    return {
+        products: state.products
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        getAllProducts: bindActionCreators(getAllProds, dispatch)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductsList);

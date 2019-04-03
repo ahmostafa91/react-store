@@ -1,30 +1,20 @@
 import React, { Component } from 'react';
 import './styleCategories.css';
-//import Categories from './../../api/CategoriesApi';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import { getAllCateg } from '../../actions/categoriesAction';
 
 class CategoryList extends Component {
 
     componentDidMount(){
 
-        this.props.getAllCategs();
-        /*Categories.getAllCategories().then((cat) => {
-            
-            let cate = cat.map((e) => {
-
-                return (<div key={e.id}>{e.name}</div>)
-            })
-            this.setState({initData: cate})
-            console.log(this.state.initData)
-        })*/
+        this.props.getAllCategs(); // action get all the fetched data
 
     }
 
     render(){
-        console.log(this.props);
-        let divs = this.props.category.map(e => <div key={e.id}>{e.name}</div>)
+        // console.log(this.props);
+        let divs = this.props.categories.map(e => <div key={e.id}>{e.name}</div>)
         return (
             <React.Fragment>
             {divs}
@@ -35,7 +25,7 @@ class CategoryList extends Component {
 
 function mapStateToProps(state) {
     return {
-        category: state.categoriesReducer
+        categories: state.categories
     }
 }
 

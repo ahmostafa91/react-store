@@ -5,7 +5,7 @@ export const getAllCateg = () => {
   return (dispatch) => {
     Categories.getAllCategories().then((data) => {
       dispatch({
-        type: types.FETCH_ALL_CATEGORIES,
+        type: types.FETCH_ALL_CATEGORIES_SUCCEEDED,
         payload: data
       })
     })

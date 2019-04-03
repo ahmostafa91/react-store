@@ -7,7 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-import rootReducer from './redusers/rootReducer';
+import rootReducer from './reducers/rootReducer';
 
 const store = createStore(rootReducer, applyMiddleware(thunk, logger));
 

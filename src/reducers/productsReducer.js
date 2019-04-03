@@ -1,11 +1,11 @@
 import * as types from '../actions/actionType';
 
-export default function categoriesReducer(
+export default function productsReducer(
     state = [],
     action,
 ) {
     switch (action.type) {
-        case types.FETCH_ALL_CATEGORIES:
+        case types.FETCH_ALL_PRODUCTS_SUCCEEDED:
             return action.payload
         default:
             return state;
