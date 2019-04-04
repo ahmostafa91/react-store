@@ -13,7 +13,8 @@ class ProductsList extends Component {
 
     render(){
         // console.log(this.props)
-        let li = this.props.products.map(e => <li key={e.id} className="prod">{e.name}</li>);
+
+        const li = this.props.products.map(e => <li key={e.id} className="prod">{e.name}</li>);
         return (
             <React.Fragment>
                 <ol>
@@ -26,7 +27,7 @@ class ProductsList extends Component {
 
 function mapStateToProps(state) {
     return {
-        products: state.products
+        products: state.products // get products array
     }
 }
 

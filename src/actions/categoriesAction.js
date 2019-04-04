@@ -11,3 +11,10 @@ export const getAllCateg = () => {
     })
   }
 };
+
+export const getCategoryId = (id) => {
+  return {
+    type: types.CATEGORY_CLICKED,
+    payload: id
+  }
+}
