@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
+import 'primereact/resources/themes/nova-light/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
 import CategoryList from './../components/categories-list/CategoriesList';
 import ProductsList from './../components/products-list/ProductsList';
 import RangeFilter from './../components/filters/rangeFilter';

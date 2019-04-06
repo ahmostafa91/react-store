@@ -1,12 +1,12 @@
 /*import * as types from '../actions/actionType';
 
-export default function getIdReducer(
+export default function colorFilterReducer(
     state = [],
     action,
 ) {
     switch (action.type) {
-        case types.CATEGORY_CLICKED:
-            return action.payload
+        case types.COLOR_FILTER_USED:
+            return action.colorVal
         default:
             return state;
     }

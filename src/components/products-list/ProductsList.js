@@ -14,7 +14,7 @@ class ProductsList extends Component {
     render(){
         // console.log(this.props)
 
-        const li = this.props.products.map(e => <li key={e.id} className="prod">{e.name}</li>);
+        const li = this.props.products.map(e => <li key={e.id} className="prod"><p>{e.name}</p><img src={e.image} alt={e.name} />></li>);
         return (
             <React.Fragment>
                 <ol>

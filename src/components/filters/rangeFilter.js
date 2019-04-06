@@ -5,7 +5,7 @@ class RangeFilter extends Component {
     constructor() {
         super();
         this.state = { 
-            rangeValues: [20, 80] 
+            rangeValues: [0, 300] 
         };
         this.onChangeRangeSlider = this.onChangeRangeSlider.bind(this);
     }
@@ -18,8 +18,8 @@ class RangeFilter extends Component {
         return(
             <React.Fragment>
 
-            <h3>Range: {this.state.rangeValues[0]},{this.state.rangeValues[1]}</h3>
-            <Slider value={this.state.rangeValues} onChange={(e) => this.setState({rangeValues: e.value})} range={true} />
+            <h3>Price Range: {this.state.rangeValues[0]},{this.state.rangeValues[1]}</h3>
+            <Slider min = {1} max = {300} value={this.state.rangeValues} onChange={(e) => this.setState({rangeValues: e.value})} range={true} />
 
             </React.Fragment>
         )
