@@ -1,4 +1,4 @@
-import * as types from './actionType';
+import * as types from './actionTypes';
 import Categories from './../api/CategoriesApi';
 
 export const getAllCateg = () => {
@@ -11,10 +11,3 @@ export const getAllCateg = () => {
     })
   }
 };
-
-export const getCategoryId = (id) => {
-  return {
-    type: types.CATEGORY_CLICKED,
-    payload: id
-  }
-}

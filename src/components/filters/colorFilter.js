@@ -2,34 +2,42 @@ import React, { Component } from 'react';
 import {ListBox} from 'primereact/listbox';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { getColor } from '../../actions/colorFilterAction';
+import { setFilter } from '../../actions/filterAction';
+import { COLOR_FILTER } from '../../constants/filtersTypes';
 import './style.css';
 
 class ColorFilter extends Component {
 
     state = {
-        color: []
+        selectedColors: []
     };
 
     render() {
-        console.log(this.state)
-
+        
         const color = this.props.products.map(e => e.color).filter(onlyUnique); // make array of colors and make it unique
 
         const colorObj = color.map((i) => { // create objects for option select
             return {label: i, value: i}
         });
 
-        const getColorVal = this.props.getColorValue(this.state.color)
-
-        console.log(getColorVal);
-
         return(
             <React.Fragment>
-                <h3 key = "colorVal">The Chosen Color(s): "{[this.state.color].join('')}"</h3>
-                <ListBox value={this.state.color} multiple filter={true} options={colorObj} onChange={(e) => this.setState({color: e.value})}
+                <h3 key = "colorVal">The Chosen Color(s): "{[this.state.selectedColors].join('')}"</h3>
+                <ListBox value={this.state.selectedColors} multiple filter={true} options={colorObj} onChange={(e) => {
+                    this.setState({selectedColors: e.value});
+                    this.props.setFilter({
+                        type: COLOR_FILTER,
+                        value: e.value
+                    });
+                }}
                 style={{width: '15em'}} listStyle={{maxHeight: '250px'}}/>
-                <button onClick = {() => this.setState({color: null})} key="clearColor">Clear Filter</button>
+                <button onClick = {() => {
+                    this.setState({selectedColors: []});
+                    this.props.setFilter({
+                        type: COLOR_FILTER,
+                        value: []
+                    });
+                }} key="clearColor">Clear Filter</button>
             </React.Fragment>
         )
     }
@@ -43,7 +51,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        getColorValue: bindActionCreators(getColor, dispatch)
+        setFilter: bindActionCreators(setFilter, dispatch)
     }
 }
 

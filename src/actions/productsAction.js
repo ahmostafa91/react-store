@@ -1,4 +1,4 @@
-import * as types from './actionType';
+import * as types from './actionTypes';
 import Products from '../api/ProductsApi';
 
 export const getAllProds = () => {

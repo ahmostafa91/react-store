@@ -1,15 +1,23 @@
-import * as types from '../actions/actionType';
+import * as types from '../actions/actionTypes';
 
-export default function filterReducer(
-    state = [],
-    action,
+export default function filtersReducer(
+  filters = [],
+  action,
 ) {
-    switch (action.type) {
-        case types.CATEGORY_CLICKED:
-            return action.payload;
-        case types.COLOR_FILTER_USED:
-            return action.payload;
-        default:
-            return state;
+  switch (action.type) {
+    case types.SET_FILTER: {
+      let filterFound = false;
+      let newFilters = filters.map(filter => {
+        if (filter.type === action.filter.type) {
+          filterFound = true;
+          return action.filter;
+        }
+        return filter;
+      });
+
+      return filterFound ? newFilters : [...filters, action.filter];
     }
+    default:
+      return filters;
+  }
 }

@@ -1,4 +1,4 @@
-import * as types from '../actions/actionType';
+import * as types from '../actions/actionTypes';
 
 export default function categoriesReducer(
     state = [],
