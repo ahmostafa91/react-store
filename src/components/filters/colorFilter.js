@@ -22,8 +22,8 @@ class ColorFilter extends Component {
 
         return(
             <React.Fragment>
-                <h3 key = "colorVal">The Chosen Color(s): "{[this.state.selectedColors].join('')}"</h3>
-                <ListBox value={this.state.selectedColors} multiple filter={true} options={colorObj} onChange={(e) => {
+                <h3 key = "colorVal">The Chosen Color: "{[this.state.selectedColors].join('')}"</h3>
+                <ListBox value={this.state.selectedColors} filter={true} options={colorObj} onChange={(e) => {
                     this.setState({selectedColors: e.value});
                     this.props.setFilter({
                         type: COLOR_FILTER,

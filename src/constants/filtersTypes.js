@@ -1,3 +1,4 @@
 export const COLOR_FILTER = 'COLOR_FILTER';
 export const CATEGORY_FILTER = 'CATEGORY_FILTER';
 export const RATTING_FILTER = 'RATTING_FILTER';
+export const RANGE_FILTER = 'RANGE_FILTER';
