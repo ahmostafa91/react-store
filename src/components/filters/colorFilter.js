@@ -35,7 +35,7 @@ class ColorFilter extends Component {
                     this.setState({selectedColors: []});
                     this.props.setFilter({
                         type: COLOR_FILTER,
-                        value: []
+                        value: null
                     });
                 }} key="clearColor">Clear Filter</button>
             </React.Fragment>

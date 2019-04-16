@@ -19,11 +19,11 @@ class RangeFilter extends Component {
     }
 
     render() { 
+        
         const priceArr = this.props.products.map(e => e.price).sort();
         const max = priceArr[priceArr.length - 1];
         const min = priceArr[0];
 
-        console.log(priceArr)
         return(
             <React.Fragment>
 

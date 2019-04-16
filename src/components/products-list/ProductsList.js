@@ -3,22 +3,38 @@ import './styleProducts.css';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getAllProds } from './../../actions/productsAction';
+import * as helper from '../../helper/productsListHelper';
 
 class ProductsList extends Component {
+    state = {
+        filteredProductsList: null,
+        filters: []
+    }
 
     componentDidMount(){
 
         this.props.getAllProducts(); // action get all the fetched data
     }
 
-    render(){
-        // console.log(this.props)
+    static getDerivedStateFromProps(nextProps, prevState) {
+        if (nextProps.filters !== prevState.filters) {
+            const filteredProductsList = nextProps.products.filter(prod => helper.isMatchingFiltersProduct(prod, nextProps.filters))
 
-        const li = this.props.products.map(e => <li key={e.id} className="prod"><p>{e.name}</p><img src={e.image} alt={e.name} />></li>);
+            return ({ filters: nextProps.filters,  filteredProductsList });
+        }
+    }
+
+    render(){
+        console.log(this.state.filteredProductsList)
+        //const {products} = this.props;
+
+        //const li = products.map(e => <li key={e.id} className="prod"><p>{e.name}</p><img src={e.image} alt={e.name} />></li>);
+
+        const lis = this.state.filteredProductsList.map(e => <div key={e.id}>{e.name}</div>)
         return (
             <React.Fragment>
                 <ol>
-                    {li}
+                    {lis}
                 </ol>
             </React.Fragment>
         );
@@ -27,7 +43,8 @@ class ProductsList extends Component {
 
 function mapStateToProps(state) {
     return {
-        products: state.products // get products array
+        products: state.products, // get products array
+        filters: state.filters
     }
 }
 
