@@ -11,7 +11,9 @@ const FILTERS = {
         return product.categoryId === categoryVal;
     },
     [filterTypes.RANGE_FILTER]: (product, rangeVal) => {
-
+        if(product.price >= rangeVal[0] && product.price <= rangeVal[1]){
+            return true;
+        }
     }
 }
 

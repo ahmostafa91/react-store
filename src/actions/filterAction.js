@@ -6,3 +6,10 @@ export const setFilter = (filter) => {
       filter
     }
   }
+
+  export const removeFilter = (filter) => {
+    return {
+      type: types.REMOVE_FILTER,
+      filter
+    }
+  }

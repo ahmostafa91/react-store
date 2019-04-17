@@ -17,6 +17,9 @@ export default function filtersReducer(
 
       return filterFound ? newFilters : [...filters, action.filter];
     }
+    case types.REMOVE_FILTER: {
+      return filters.filter(obj => obj.type !== action.filter.type)
+    }
     default:
       return filters;
   }
