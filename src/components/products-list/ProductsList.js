@@ -34,7 +34,7 @@ class ProductsList extends Component {
         return (
             <React.Fragment>
                 <ol>
-                    {lis}
+                    {this.state.filteredProductsList.length > 0 ? lis : li}
                 </ol>
             </React.Fragment>
         );
