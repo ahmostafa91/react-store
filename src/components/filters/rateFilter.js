@@ -3,6 +3,7 @@ import {Rating} from 'primereact/rating';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { setFilter } from './../../actions/filterAction';
+import { removeFilter } from '../../actions/filterAction';
 import { RATTING_FILTER } from '../../constants/filtersTypes';
 
 class RatingFilter extends Component {
@@ -23,6 +24,14 @@ class RatingFilter extends Component {
                 });
             }} />
 
+
+            <button onClick = {() => {
+                this.setState({val1: null});
+                this.props.removeFilter({
+                    type: RATTING_FILTER
+                });
+            }} key="clearColor">Clear Filter</button>
+
             </React.Fragment>
         )
     }
@@ -36,7 +45,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        setFilter: bindActionCreators(setFilter, dispatch)
+        setFilter: bindActionCreators(setFilter, dispatch),
+        removeFilter: bindActionCreators(removeFilter, dispatch)
     }
 }
 

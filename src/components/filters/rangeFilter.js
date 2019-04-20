@@ -3,13 +3,14 @@ import {Slider} from 'primereact/slider';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { setFilter } from '../../actions/filterAction';
+import { removeFilter } from '../../actions/filterAction';
 import { RANGE_FILTER } from '../../constants/filtersTypes';
 
 class RangeFilter extends Component {
     constructor() {
         super();
         this.state = { 
-            rangeValues: [] 
+            rangeValues: [30, 100] 
         };
         this.onChangeRangeSlider = this.onChangeRangeSlider.bind(this);
     }
@@ -33,6 +34,12 @@ class RangeFilter extends Component {
                 this.props.setFilter({type: RANGE_FILTER, value: e.value})
             }} range={true} />
 
+            <button onClick = {() => {
+                this.setState({rangeValues: [30, 100]});
+                this.props.removeFilter({
+                    type: RANGE_FILTER
+                });
+            }} key="clearColor">Clear Filter</button>
             </React.Fragment>
         )
     }
@@ -46,7 +53,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        setFilter: bindActionCreators(setFilter, dispatch)
+        setFilter: bindActionCreators(setFilter, dispatch),
+        removeFilter: bindActionCreators(removeFilter, dispatch)
     }
 }
 
