@@ -2,7 +2,15 @@ import * as filterTypes from '../constants/filtersTypes';
 
 const FILTERS = {
     [filterTypes.COLOR_FILTER]: (product, colorVal) => {
-            return product.color === colorVal;
+        let index = colorVal.indexOf(product.color);
+        if (index > -1) {
+            return true;
+        }
+        if (colorVal.length === 0) {
+            colorVal = product.color;
+            return product.color === colorVal 
+        }
+            //return product.color === colorVal;
     },
     [filterTypes.RATTING_FILTER]: (product, rateVal) => {
         return product.rating === rateVal;

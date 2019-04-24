@@ -24,15 +24,15 @@ class ColorFilter extends Component {
         return(
             <React.Fragment>
                 <h3 key = "colorVal">The Chosen Color: "{[this.state.selectedColors].join('')}"</h3>
-                <ListBox value={this.state.selectedColors} filter={true} options={colorObj} onChange={(e) => {
+                <ListBox value={this.state.selectedColors} multiple metaKeySelection={false} filter={true} options={colorObj} onChange={(e) => {
                     this.setState({selectedColors: e.value});
                     this.props.setFilter({
                         type: COLOR_FILTER,
                         value: e.value
                     });
                 }}
-                style={{width: '15em'}} listStyle={{maxHeight: '250px'}}/>
-                <button onClick = {() => {
+                style={{width: '15em', margin: 0}} listStyle={{maxHeight: '250px'}}/>
+                <button className="btns" onClick = {() => {
                     this.setState({selectedColors: []});
                     this.props.removeFilter({
                         type: COLOR_FILTER

@@ -10,7 +10,7 @@ class RangeFilter extends Component {
     constructor() {
         super();
         this.state = { 
-            rangeValues: [30, 100] 
+            rangeValues: [100, 300] 
         };
         this.onChangeRangeSlider = this.onChangeRangeSlider.bind(this);
     }
@@ -34,8 +34,8 @@ class RangeFilter extends Component {
                 this.props.setFilter({type: RANGE_FILTER, value: e.value})
             }} range={true} />
 
-            <button onClick = {() => {
-                this.setState({rangeValues: [30, 100]});
+            <button className="btns" onClick = {() => {
+                this.setState({rangeValues: [100, 300]});
                 this.props.removeFilter({
                     type: RANGE_FILTER
                 });

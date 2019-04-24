@@ -25,7 +25,7 @@ class RatingFilter extends Component {
             }} />
 
 
-            <button onClick = {() => {
+            <button className="btns" onClick = {() => {
                 this.setState({val1: null});
                 this.props.removeFilter({
                     type: RATTING_FILTER

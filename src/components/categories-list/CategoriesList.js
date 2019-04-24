@@ -15,14 +15,16 @@ class CategoryList extends Component {
     }
 
     render(){
-        const divs = this.props.categories.map(e => <div key={e.id} onClick={() => {this.props.setFilter({
+        const li = this.props.categories.map(e => <li className="category-item p-col-5 p-md-4 p-lg-2" key={e.id} onClick={() => {this.props.setFilter({
             type: CATEGORY_FILTER,
             value: e.id
-        });}}>{e.name}</div>);
+        });}}>{e.name}</li>);
 
         return (
             <React.Fragment>
-            {divs}
+            <ul className="caregory-list p-grid p-justify-even">
+                {li}
+            </ul>
             </React.Fragment>
         );
     }
