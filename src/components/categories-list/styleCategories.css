@@ -1,14 +1,19 @@
+.caregory-list {
+    margin: 1%;
+}
+
 .category-item {
     text-align: center;
     margin: 0.3em;
     cursor: pointer;
     color: #fff;
-    background-color: orange;
+    background-color: #ffa500;
+    font-weight: bold;
 }
 
 .category-item:hover {
-    background-color: #000;
-    color: #fff;
+    background-color: #fff;
+    color: #ffa500;
     -webkit-transition: 0.3s all ease-in-out;
     -moz-transition: 0.3s all ease-in-out;
     transition: 0.3s all ease-in-out;

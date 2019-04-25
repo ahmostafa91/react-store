@@ -4,12 +4,26 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getAllProds } from './../../actions/productsAction';
 import { Rating } from 'primereact/rating';
+import {Paginator} from 'primereact/paginator';
 import * as helper from '../../helper/productsListHelper';
 
 class ProductsList extends Component {
-    state = {
-        filteredProductsList: null,
-        filters: []
+    constructor() {
+        super();
+        this.state = {
+            filteredProductsList: null,
+            filters: [],
+            first: 0, 
+            rows: 9
+        }
+        this.onPageChange = this.onPageChange.bind(this);
+    }
+
+    onPageChange(event) {
+        this.setState({
+            first: event.first,
+            rows: event.rows
+        });
     }
 
     componentDidMount(){
@@ -21,22 +35,42 @@ class ProductsList extends Component {
         if (nextProps.filters !== prevState.filters) {
             const filteredProductsList = nextProps.products.filter(prod => helper.isMatchingFiltersProduct(prod, nextProps.filters))
 
-            return ({ filters: nextProps.filters, filteredProductsList });
+            return ({ filters: nextProps.filters, filteredProductsList, first: 0 });
         }
     }
 
     render(){
-        console.log(this.state.filteredProductsList)
         const {products} = this.props;
 
-        const li = products.map(e => <li key={e.id} className="prod p-col-12 p-md-4 p-lg-3"><img className="prod-image" src={e.image} alt={e.name} /><p>{e.name}</p><Rating value={e.rating} readonly={true} stars={5} cancel={false} /> &#36; {e.price}</li>);
+        let paginatorRecords = null;
 
-        const lis = this.state.filteredProductsList.map(e => <li key={e.id} className="prod p-col-12 p-md-4 p-lg-3"><img className="prod-image" src={e.image} alt={e.name} /><p>{e.name}</p><Rating value={e.rating} readonly={true} stars={5} cancel={false} /> &#36; {e.price}</li>)
+        if(this.state.filteredProductsList.length === 0) {
+            paginatorRecords = products.length
+        }
+        else {
+            paginatorRecords = this.state.filteredProductsList.length
+        }
+
+        const filteredProductsList = this.state.filteredProductsList.slice(this.state.first, this.state.first + this.state.rows);
+
+        const prodPaginator = products.slice(this.state.first, this.state.first + this.state.rows);
+
+        const li = prodPaginator.map(e => 
+            <li key={e.id} className="prod p-col-12 p-md-4 p-lg-3"><img className="prod-image" src={e.image} alt={e.name} /><p>{e.name}</p><Rating value={e.rating} readonly={true} stars={5} cancel={false} /> &#36; {e.price}</li>
+            );
+
+        const lis = filteredProductsList.map(e => 
+            <li key={e.id} className="prod p-col-12 p-md-4 p-lg-3"><img className="prod-image" src={e.image} alt={e.name} /><p>{e.name}</p><Rating value={e.rating} readonly={true} stars={5} cancel={false} /> &#36; {e.price}</li>
+            );
+            
         return (
             <React.Fragment>
                 <ol className="p-grid p-justify-even">
-                    {this.state.filters.length === 0 ? li : this.state.filteredProductsList.length === 0 ? <h4>no results</h4> : lis}
+                    {this.state.filters.length === 0 ? li : filteredProductsList.length === 0 ? <h4>no results</h4> : lis}
                 </ol>
+
+                <Paginator first={this.state.first} rows={this.state.rows} totalRecords={paginatorRecords} 
+                rowsPerPageOptions={[9,20,30]} onPageChange={this.onPageChange}></Paginator>
             </React.Fragment>
         );
     }
@@ -56,7 +90,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsList);
-
-//<li className="prod" key={e.id}>{e.name} <Rating value={e.rating} readonly={true} stars={5} cancel={false} /> || category: {e.categoryId} || price: {e.price} || color: {e.color} || rating: {e.rating}</li>
-
-// <li key={e.id} className="prod"><img src={e.image} alt={e.name} /><p>{e.name}</p><Rating value={e.rating} readonly={true} stars={5} cancel={false} /> &#36; {e.price}</li>

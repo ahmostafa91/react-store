@@ -8,3 +8,12 @@
 .prod-image {
     max-width: 70%;
 }
+
+body .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+    background-color: orange;
+}
+
+body .p-paginator .p-paginator-pages .p-paginator-page:not(.p-highlight):hover {
+    background-color: #000;
+    color: #fff;
+}

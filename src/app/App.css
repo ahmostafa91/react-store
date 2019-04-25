@@ -22,8 +22,18 @@
   background-color: #000;
 }
 /*end global style*/
-h1 {
+
+header {
+  margin-bottom: 2%;
+}
+
+header nav {
+  background-color: #000;
+}
+
+header h1 {
   text-align: center;
+  margin: 0;
 }
 
 .filters {
