@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { getAllCateg } from '../../actions/categoriesAction';
 import { setFilter } from './../../actions/filterAction';
 import { CATEGORY_FILTER } from '../../constants/filtersTypes';
+import PropTypes from 'prop-types';
 
 class CategoryList extends Component {
 
@@ -41,6 +42,12 @@ function mapDispatchToProps(dispatch) {
         getAllCategs: bindActionCreators(getAllCateg, dispatch),
         setFilter: bindActionCreators(setFilter, dispatch)
     }
+}
+
+CategoryList.propTypes = {
+    categories: PropTypes.array,
+    getAllCategs: PropTypes.func,
+    setFilter: PropTypes.func
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoryList);

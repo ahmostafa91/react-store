@@ -6,6 +6,7 @@ import { getAllProds } from './../../actions/productsAction';
 import { Rating } from 'primereact/rating';
 import {Paginator} from 'primereact/paginator';
 import * as helper from '../../helper/productsListHelper';
+import PropTypes from 'prop-types';
 
 class ProductsList extends Component {
     constructor() {
@@ -66,7 +67,7 @@ class ProductsList extends Component {
         return (
             <React.Fragment>
                 <ol className="p-grid p-justify-even">
-                    {this.state.filters.length === 0 ? li : filteredProductsList.length === 0 ? <h4>no results</h4> : lis}
+                    {this.state.filters.length === 0 ? li : filteredProductsList.length === 0 ? <h4>No Results</h4> : lis}
                 </ol>
 
                 <Paginator first={this.state.first} rows={this.state.rows} totalRecords={paginatorRecords} 
@@ -87,6 +88,12 @@ function mapDispatchToProps(dispatch) {
     return {
         getAllProducts: bindActionCreators(getAllProds, dispatch)
     }
+}
+
+ProductsList.propTypes = {
+    products: PropTypes.array,
+    filters: PropTypes.array,
+    getAllProducts: PropTypes.func
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsList);

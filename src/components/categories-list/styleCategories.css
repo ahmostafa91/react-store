@@ -7,14 +7,18 @@
     margin: 0.3em;
     cursor: pointer;
     color: #fff;
+    font-family: 'Roboto', sans-serif;
     background-color: #ffa500;
     font-weight: bold;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
 }
 
 .category-item:hover {
     background-color: #fff;
     color: #ffa500;
-    -webkit-transition: 0.3s all ease-in-out;
-    -moz-transition: 0.3s all ease-in-out;
-    transition: 0.3s all ease-in-out;
+    -webkit-transition: 0.4s all ease-in-out;
+    -moz-transition: 0.4s all ease-in-out;
+    transition: 0.4s all ease-in-out;
 }

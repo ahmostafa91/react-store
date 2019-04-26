@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { setFilter } from '../../actions/filterAction';
 import { removeFilter } from '../../actions/filterAction';
 import { RANGE_FILTER } from '../../constants/filtersTypes';
+import PropTypes from 'prop-types';
 
 class RangeFilter extends Component {
     constructor() {
@@ -56,6 +57,12 @@ function mapDispatchToProps(dispatch) {
         setFilter: bindActionCreators(setFilter, dispatch),
         removeFilter: bindActionCreators(removeFilter, dispatch)
     }
+}
+
+RangeFilter.propTypes = {
+    products: PropTypes.array,
+    setFilter: PropTypes.func,
+    removeFilter: PropTypes.func
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RangeFilter);

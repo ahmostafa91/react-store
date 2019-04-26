@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { setFilter } from './../../actions/filterAction';
 import { removeFilter } from '../../actions/filterAction';
 import { RATTING_FILTER } from '../../constants/filtersTypes';
+import PropTypes from 'prop-types';
 
 class RatingFilter extends Component {
     state = { 
@@ -48,6 +49,12 @@ function mapDispatchToProps(dispatch) {
         setFilter: bindActionCreators(setFilter, dispatch),
         removeFilter: bindActionCreators(removeFilter, dispatch)
     }
+}
+
+RatingFilter.propTypes = {
+    products: PropTypes.array,
+    setFilter: PropTypes.func,
+    removeFilter: PropTypes.func
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RatingFilter);

@@ -6,6 +6,7 @@ import { setFilter } from '../../actions/filterAction';
 import { removeFilter } from '../../actions/filterAction';
 import { COLOR_FILTER } from '../../constants/filtersTypes';
 import './style.css';
+import PropTypes from 'prop-types';
 
 class ColorFilter extends Component {
 
@@ -31,7 +32,7 @@ class ColorFilter extends Component {
                         value: e.value
                     });
                 }}
-                style={{width: '15em', margin: 0}} listStyle={{maxHeight: '250px'}}/>
+                style={{width: '100%'}} listStyle={{maxHeight: '250px'}}/>
                 <button className="btns" onClick = {() => {
                     this.setState({selectedColors: []});
                     this.props.removeFilter({
@@ -59,5 +60,12 @@ function mapDispatchToProps(dispatch) {
 function onlyUnique(value, index, self) { // function used to make unique array
     return self.indexOf(value) === index;
 }
+
+ColorFilter.propTypes = {
+    products: PropTypes.array,
+    setFilter: PropTypes.func,
+    removeFilter: PropTypes.func
+}
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(ColorFilter);
