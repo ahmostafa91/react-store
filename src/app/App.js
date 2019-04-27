@@ -6,9 +6,9 @@ import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
 import CategoryList from './../components/categories-list/CategoriesList';
 import ProductsList from './../components/products-list/ProductsList';
-import RangeFilter from './../components/filters/rangeFilter';
-import ColorFilter from './../components/filters/colorFilter';
-import RatingFilter from './../components/filters/rateFilter';
+import RangeFilter from './../components/filters/RangeFilter';
+import ColorFilter from './../components/filters/ColorFilter';
+import RatingFilter from './../components/filters/RateFilter';
 import AnimateHeight from 'react-animate-height';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

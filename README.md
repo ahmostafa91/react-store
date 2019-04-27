@@ -1,68 +1,79 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Edfa3ly Store "React App"
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+- [Description](#description)
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [The Technical Choices](#the-technical-choices)
+- [Upgrades For Project](#upgrades-for-project)
+- [Dependencies](#dependencies)
+- [Resources](#resources)
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Description
 
-### `npm test`
+**Edfa3ly Store** responsive web app store based on ***reactjs*** technology .
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### The Problem :
 
-### `npm run build`
+There is lots of products data received from the server , and it must be usable and easy for users to interact with it .
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### The Solution :
+The app fetch data from server and display it in usable UI . 
+In the UI there is four options for users to control the displayed products data (categories - price range - color - rating) .
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### How It Works ?
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+ 1.  After the app run in browser a list of products will be loaded in the main page (the full list without filter) , and users can use the Pagination to move between the full list .
 
-### `npm run eject`
+ 2.  Users will find filters that will help them to display the products that they want :-
+ 
+***Categories Filter*** :  "users can choose one of five different categories".
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+***Price Range Filter*** : "users can assign price range for the products that will be displayed by assign min & max value on slider, and to clear the filter user can click on the clear filter button under the range slider"
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+***Color Filter*** : "users can choose one color or more from color list, also to clear the filter user can click again on the chosen color to deselect it or press on the clear filter button under the color list".
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+***Rating Filter*** : "also users can assign rating range for the products that will be displayed by assign the number of stars , and to clear the filter user can click on the clear filter button under the color list"
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+3. Users can combine more than one filter together to get better results .
 
-## Learn More
+ ***
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+> ***The basic idea that filter depend on is redux store and react life cycle called `getDerivedStateFromProps`***
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+***
 
-### Code Splitting
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## The Technical Choices
 
-### Analyzing the Bundle Size
+ 1. **I choose to build this app with reactjs because the basic concept is based on it (Virtual DOM) and this will provide higher efficiency because it will not destroy and rebuild the full dom on every change in UI rendering , the rebuild will be only for the changed element in UI .**
+ 2. **I build this project structure based on "*Grouping by file type*" , there is another way "Grouping by features" but i found "the file type" good for this project because (it's not a big project) .**
+ 3. **I choose to put all the communications with back-end (using fetch library) in one place so that i can change it easily in the future "if needed" .**
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## Upgrades For Project
 
-### Making a Progressive Web App
+ 1. **Categories Slider** : There is another way to make the categories "instead of using buttons" . The idea is creating slider for each main category and display the top 10 products in it , then add show more button that take the user for page that display the products that related with this category only (but in this case we will use react router dom) .
+ 2. **Pagination** : The best practices for pagination that the back-end make it , because in real life app there is lot's of products data , and it's not right to send all of it in response from one end point to the request from front-end (like the case in this app) .
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## Dependencies
 
-### Advanced Configuration
+ 1. **React.js .**
+ 2. **Redux .**
+ 3. **Redux Thunk .**
+ 4. **Redux Logger .**
+ 5. **ES6 .**
+ 6. **Prop Type .**
+ 7. **Prime React .**
+ 8. **Prime Flex .**
+ 9. **Font Awesome .**
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+## Resources 
 
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+ 1. **Useing Concept R.S.A (Read, Search, Ask) .**
+ 2. **React Documentation .**
+ 3. **Redux Documentation .**
+ 4. **Stack Overflow .**
+ 5. **Prime React Documentation .**
+ 6. **Font Awesome Documentation .**

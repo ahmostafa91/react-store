@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Rating} from 'primereact/rating';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { setFilter } from './../../actions/filterAction';
+import { setFilter } from '../../actions/filterAction';
 import { removeFilter } from '../../actions/filterAction';
 import { RATTING_FILTER } from '../../constants/filtersTypes';
 import PropTypes from 'prop-types';

@@ -2,9 +2,15 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 /*start global style*/
+
 * {
   list-style-type: none;
   padding: 0;
+}
+
+body {
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .btns {
@@ -25,6 +31,8 @@
   background-color: #000;
 }
 /*end global style*/
+
+/*start main app style*/
 
 header {
   margin-bottom: 2%;
@@ -61,7 +69,9 @@ footer {
   color: #fff;
 }
 
-/*responsive*/
+/*end main app style*/
+
+/*****responsive*****/
 
 @media screen and (max-width: 767px) {
   .smHide {
